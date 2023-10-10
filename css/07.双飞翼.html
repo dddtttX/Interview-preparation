@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>双飞翼</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+            body {
+                width: 100vw;
+                height: 100vh;
+            }
+            .container {
+                display: flex;
+                justify-content: left;
+            }
+            .left {
+                width: 200px;
+                height: 100vh;
+                background-color: blue;
+            }
+            .right {
+                width: 200px;
+                height: 100vh;
+                background-color: pink;
+            }
+            .center {
+                flex: 1;
+                height: 100vh;
+                background-color: grey;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="left">left</div>
+            <div class="center">
+                <div class="main">center</div>
+            </div>
+            <div class="right">right</div>
+        </div>
+    </body>
+</html>

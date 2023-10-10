@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>防抖</title>
+    </head>
+    <body>
+        <input type="text" />
+    </body>
+
+    <script>
+        let ipt = document.querySelector("input")
+
+        // ipt.addEventListener("keyup", e => {
+        //     console.log("搜索" + e.target.value)
+        // })
+
+        // 业务函数
+        function todo() {
+            console.log("搜索" + this.value)
+        }
+
+        function debounce(fn, delay) {
+            // 打断施法
+            // 如果存在定时器，就干掉定时器重来
+            let timer = null
+
+            return function () {
+                if (timer) clearTimeout(timer)
+                timer = setTimeout(() => {
+                    fn.apply(this, arguments)
+                }, delay)
+            }
+        }
+
+        ipt.addEventListener("keyup", debounce(todo, 1000))
+    </script>
+</html>

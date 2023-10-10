@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>节流</title>
+    </head>
+    <body>
+        <input type="button" value="这是一个节流按钮" />
+    </body>
+    <script>
+        let ipt = document.querySelector("input")
+        let count = 0
+
+        // 业务函数
+        function todo(a) {
+            count++
+            console.log(a)
+            console.log("这是第" + count + "次点击按钮")
+        }
+
+        function throttle(fn, delay) {
+            // 在n秒只实现一次
+            let timer = null
+            return function () {
+                if (timer) {
+                    console.log("已经提交过了哦")
+                    return
+                }
+                fn(...arguments)
+                timer = setTimeout(() => {
+                    timer = null
+                }, delay)
+            }
+        }
+
+        ipt.addEventListener(
+            "click",
+            throttle(() => {
+                todo(1)
+            }, 2000)
+        )
+    </script>
+</html>
